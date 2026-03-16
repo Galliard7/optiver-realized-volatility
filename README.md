@@ -77,6 +77,22 @@ optiver-realized-volatility/
     └── feateng-dynamics.py                         # Temporal dynamics feature pipeline
 ```
 
+
+## Kaggle Notebooks
+
+Key notebooks published on Kaggle ([illidan7](https://www.kaggle.com/illidan7)):
+
+- [optiver_feateng3](https://www.kaggle.com/code/illidan7/optiver-feateng3)
+- [optiver_feature_creation](https://www.kaggle.com/code/illidan7/optiver-feature-creation)
+- [Optiver_features3](https://www.kaggle.com/code/illidan7/optiver-features3)
+- [Optiver_LGBM_submission_Archive](https://www.kaggle.com/code/illidan7/optiver-lgbm-submission-archive)
+- [Optiver_LGBM_submission](https://www.kaggle.com/code/illidan7/optiver-lgbm-submission)
+- [Optiver_submit](https://www.kaggle.com/code/illidan7/optiver-submit)
+- [Optiver_submit3](https://www.kaggle.com/code/illidan7/optiver-submit3)
+- [Optiver_train_GBM](https://www.kaggle.com/code/illidan7/optiver-train-gbm)
+- [Optiver_train1](https://www.kaggle.com/code/illidan7/optiver-train1)
+- [Optiver_train2](https://www.kaggle.com/code/illidan7/optiver-train2)
+- [Optiver_train3_GBM](https://www.kaggle.com/code/illidan7/optiver-train3-gbm)
 ## Tech Stack
 
 - **ML**: LightGBM, PyTorch, scikit-learn, Optuna
