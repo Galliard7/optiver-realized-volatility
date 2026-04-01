@@ -1,5 +1,7 @@
 # Optiver Realized Volatility Prediction
 
+![Competition Header](assets/header.png)
+
 Predicting short-term realized volatility of stocks from high-frequency order book and trade data. This was a [Kaggle competition](https://www.kaggle.com/competitions/optiver-realized-volatility-prediction) hosted by Optiver in 2021, scored on Root Mean Squared Percentage Error (RMSPE). Notebooks developed on [Kaggle](https://www.kaggle.com/illidan7) using GPU instances.
 
 ## Approach
@@ -53,6 +55,38 @@ Production submission with scipy-optimized ensemble weights. Fine-tunes the blen
 Standalone Python scripts for production feature pipelines, designed to run as Kaggle utility scripts attached to training/inference notebooks:
 - **Order book features** — spread, depth, imbalance, multi-level WAP derivatives
 - **Dynamics features** — temporal patterns, moving averages, momentum indicators
+
+## Results
+
+| Model | Notes |
+|---|---|
+| LGBM baseline | RMSPE custom loss (1/y² weights) |
+| LGBM + Bayesian tuning | Optuna hyperparameter optimization |
+| LGBM (pruned features) | Importance-based feature selection |
+| PyTorch 1D CNN | Raw order book sequences, end-to-end |
+| LGBM + NN ensemble | 2 LGBM + 2 NN blending |
+| **Final optimized ensemble** | Scipy-optimized weights |
+
+> Metric: RMSPE (Root Mean Squared Percentage Error)
+
+## Architecture
+
+```mermaid
+graph LR
+    A["Order Book + Trade Data"] --> B["Feature Engineering<br>200+ features"]
+    A --> B2["Stock Clustering<br>KMeans / HDBSCAN"]
+    B --> C["Feature Selection<br>importance pruning"]
+    B2 --> C
+    C --> D1["LightGBM v1<br>RMSPE loss"]
+    C --> D2["LightGBM v2<br>Bayesian-tuned"]
+    C --> D3["PyTorch CNN<br>raw sequences"]
+    C --> D4["Neural Net v2"]
+    D1 --> E["Scipy-Optimized<br>Ensemble Weights"]
+    D2 --> E
+    D3 --> E
+    D4 --> E
+    E --> F["Volatility Predictions"]
+```
 
 ## Repository Structure
 
